@@ -1,0 +1,44 @@
+temp.txt
+
+
+# Python-generated files
+server/**/__pycache__/
+server/*.py[oc]
+server/build/
+server/dist/
+server/wheels/
+server/*.egg-info
+
+# Virtual environments
+server/.venv
+
+# Django
+server/*.sqlite3
+server/*.log
+server/media/
+server/staticfiles/
+
+# Migrations (keep __init__.py, ignore actual migration files)
+# server/**/migrations/*.py
+!server/**/migrations/__init__.py
+
+# Environment variables
+server/.env
+server/.env.*.local
+
+# uv
+server/.python-version
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+
+
+password_manager/node_modules
+password_manager/.expo
