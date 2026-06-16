@@ -17,7 +17,6 @@ ALLOWED_HOSTS = []
 
 # Default Django apps + our apps
 INSTALLED_APPS = [
-    "unfold",
     "unfold.contrib.filters",  # optional — better filter UI
     "unfold.contrib.forms",  # optional — styled forms
     "unfold.contrib.inlines",  # optional — styled inlines
@@ -36,7 +35,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     # Our apps (we'll create these next)
     "apps.users",
-    # "apps.todos",
+    "apps.password_manager",
     "allauth.socialaccount.providers.google",
 ]
 
@@ -118,62 +117,3 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 # OTP settings
 ACCOUNT_EMAIL_SUBJECT_PREFIX = ""
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
-
-
-from django.templatetags.static import static
-from django.urls import reverse_lazy
-
-UNFOLD = {
-    "SITE_TITLE": "My Admin",
-    "SITE_HEADER": "My Project",
-    "SITE_URL": "/",
-    "SITE_ICON": None,  # or path to your icon
-    "SITE_LOGO": None,  # or path to your logo
-    "SITE_SYMBOL": "speed",  # Google Material symbol
-    "SHOW_HISTORY": True,
-    "SHOW_VIEW_ON_SITE": True,
-    "SHOW_BACK_BUTTON": True,
-    "ENVIRONMENT": "myapp.admin_helpers.environment_callback",  # optional
-    "DASHBOARD_CALLBACK": None,
-    "EXTENSIONS": {
-        "modeltranslation": {
-            "flags": {},
-        },
-    },
-    "SIDEBAR": {
-        "show_search": True,
-        "show_all_applications": False,
-        "navigation": [
-            {
-                "title": "Navigation",
-                "separator": False,
-                "collapsible": False,
-                "items": [
-                    {
-                        "title": "Dashboard",
-                        "icon": "dashboard",
-                        "link": reverse_lazy("admin:index"),
-                    },
-                ],
-            },
-            {
-                "title": "Users",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "Users",
-                        "icon": "person",
-                        "link": reverse_lazy("admin:users_user_changelist"),
-                    },
-                    {
-                        "title": "Email OTPs",
-                        "icon": "mail",
-                        "link": reverse_lazy("admin:users_emailotp_changelist"),
-                    },
-                ],
-            },
-        ],
-    },
-    "TABS": [],
-}

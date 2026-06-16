@@ -17,6 +17,7 @@ import json
 from .utils import create_access_token
 from django.shortcuts import redirect
 from allauth.socialaccount.models import SocialAccount
+from .csrf import get_csrf_token
 
 router = Router(tags=["Auth"])
 
@@ -273,3 +274,8 @@ def reset_password(request: HttpRequest, payload: ResetPasswordIn):
     user.save()
 
     return 200, {"message": "Password reset successfully"}
+
+
+@router.get("/csrf", auth=None)
+def csrf_token_view(request):
+    return get_csrf_token(request)
